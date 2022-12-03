@@ -43,15 +43,15 @@ int search_element(H *table[],int key){
         //NULL
         return control;
     }else{
-       H *aux = table[index];
+       H *assistant = table[index];
        while (control==0){
-        if(aux->key==key){
+        if(assistant->key==key){
             //Found
-            //printf("%d \n", aux->key); imprimir chave 
+            //printf("%d \n", assistant->key); imprimir chave 
             control=1;
         }
-        aux=aux->next;
-        if(aux==NULL) break;
+        assistant=assistant->next;
+        if(assistant==NULL) break;
        }
     }
     return control;
@@ -71,12 +71,12 @@ void insert(H *table[],int key){
                 H *h =creat_element(key);
                 table[index]->next=h;
             }else{
-                H *aux = table[index];
-                while (aux->next!=NULL){
-                    aux=aux->next;
+                H *assistant = table[index];
+                while (assistant->next!=NULL){
+                    assistant=assistant->next;
                 }
                 H *h =creat_element(key);
-                aux->next = h;
+                assistant->next = h;
             }
         }
     }
@@ -86,10 +86,10 @@ void show(H *table[]){
     printf("\n_____HASH TABLE____\n");
     for(int i=0;i<M;i++){
         printf("%d |%d|", i, table[i]->key);
-        H *aux = table[i];
-        while (aux->next!=NULL){
-            printf("-> %d", aux->next->key);
-            aux=aux->next;
+        H *assistant = table[i];
+        while (assistant->next!=NULL){
+            printf("-> %d", assistant->next->key);
+            assistant=assistant->next;
         }
         printf("\n");
     }
@@ -108,15 +108,15 @@ void remove_element(H *table[],int key){
            table[index]->next = table[index]->next->next;
         }else{
             H *left = table[index]->next;
-            H *aux = table[index]->next->next;
-            do{if(aux->key==key){
-                    left->next= aux->next;
-                    free(aux);
+            H *assistant = table[index]->next->next;
+            do{if(assistant->key==key){
+                    left->next= assistant->next;
+                    free(assistant);
                     break;
                 }
-                left=aux;
-                aux=aux->next;
-            }while(aux!=NULL);          
+                left=assistant;
+                assistant=assistant->next;
+            }while(assistant!=NULL);          
         }
     }
 }
