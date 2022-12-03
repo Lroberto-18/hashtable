@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #define LEN 50
 //het. encademento exterior
-
+//testes
 void creat(int table[]){
     for(int i=0;i<LEN;i++) table[i]=-1;
 }
@@ -30,5 +30,5 @@ void main(){
     show(table);
     //insert(table,67);
     //printf("%d ", search(table,67));
-    search(table,67);
+    search(table,6);
 }
